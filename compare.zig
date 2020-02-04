@@ -17,7 +17,7 @@ pub fn orderUsize(comptime T: type, lhs: []const T, rhs: []const T) std.math.Ord
     const usize_bytes = @sizeOf(usize);
     const n = std.math.min(lhs.len, rhs.len);
     var i: usize = 0;
-    while ((i + 1) * usize_bytes < n) : (i += usize_bytes) {
+    while ((i + 1) * usize_bytes <= n) : (i += usize_bytes) {
         const a = std.mem.readIntBig(usize, @ptrCast(*const [usize_bytes]u8, &lhs[i]));
         const b = std.mem.readIntBig(usize, @ptrCast(*const [usize_bytes]u8, &rhs[i]));
         switch (std.math.order(a, b)) {
