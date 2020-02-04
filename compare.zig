@@ -49,6 +49,7 @@ test "benchmark" {
         };
 
         const rand = @embedFile("rand.txt");
+        const rand_long = @embedFile("rand-long.txt");
 
         pub const args = [_]Arg{
             .{ .lhs = "abc", .rhs = "abd" },
@@ -56,6 +57,7 @@ test "benchmark" {
             .{ .lhs = "abcdefghijklmnopqrstuvwxyz", .rhs = "abcdefghijklXnopqrstuvwxyz" },
             .{ .lhs = "abcdefghijklmnopqrstuvwxyz", .rhs = "abcdefghijklmnopqrstuvwxyz" },
             .{ .lhs = rand, .rhs = rand },
+            .{ .lhs = rand_long, .rhs = rand_long },
         };
 
         pub const iterations = 100000;
